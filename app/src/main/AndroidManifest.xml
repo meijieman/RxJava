@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.hongfans.rxjava">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Execise1Activity">
+        </activity>
+        <activity android:name=".Execise2Activity">
+        </activity>
+        <activity android:name=".operation.CreatingActivity">
+        </activity>
+        <activity android:name=".operation.TransformingActivity">
+        </activity>
+        <activity android:name=".operation.FilteringActivity">
+        </activity>
+        <activity android:name=".operation.CombiningActivity">
+        </activity>
+        <activity android:name=".operation.ErrorHandlingActivity">
+        </activity>
+        <activity android:name=".operation.UtilityActivity">
+        </activity>
+        <activity android:name=".operation.ConditionalActivity">
+        </activity>
+        <activity android:name=".operation.MathematicalActivity">
+        </activity>
+        <activity android:name=".operation.AsyncActivity">
+        </activity>
+        <activity android:name=".operation.ConnectActivity">
+        </activity>
+        <activity android:name=".operation.ConvertActivity">
+        </activity>
+        <activity android:name=".operation.BlockingActivity">
+        </activity>
+        <activity android:name=".operation.StringActivity">
+        </activity>
+        <activity android:name=".ScheduleActivity">
+        </activity>
+    </application>
+
+</manifest>
