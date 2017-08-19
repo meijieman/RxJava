@@ -38,14 +38,16 @@ public class CreatingActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch(v.getId()) {
             case R.id.btn_1: {
                 // create 默认不在任何特定的调度器上执行
                 Observable.create(new Observable.OnSubscribe<Integer>() {
                     @Override
                     public void call(Subscriber<? super Integer> subscriber) {
-                        for (int i = 0; i < 5; i++) {
-                            subscriber.onNext(i);
+                        if(!subscriber.isUnsubscribed()){
+                            for(int i = 0; i < 5; i++){
+                                subscriber.onNext(i);
+                            }
                         }
                         subscriber.onCompleted();
                     }
