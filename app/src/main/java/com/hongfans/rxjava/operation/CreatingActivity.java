@@ -7,6 +7,8 @@ import android.view.View;
 import com.hongfans.rxjava.LogUtil;
 import com.hongfans.rxjava.R;
 
+import java.util.concurrent.TimeUnit;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action1;
@@ -21,10 +23,10 @@ import rx.functions.Func0;
  * Throw 创建一个不发射数据以一个错误终止的Observable
  * , From, Interval, Just, Range, Repeat, Start, Timer
  */
-public class CreatingActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreatingActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creating);
 
@@ -34,16 +36,19 @@ public class CreatingActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.btn_4).setOnClickListener(this);
         findViewById(R.id.btn_5).setOnClickListener(this);
         findViewById(R.id.btn_6).setOnClickListener(this);
+        findViewById(R.id.btn_7).setOnClickListener(this);
+        findViewById(R.id.btn_8).setOnClickListener(this);
+        findViewById(R.id.btn_9).setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v){
         switch(v.getId()) {
             case R.id.btn_1: {
                 // create 默认不在任何特定的调度器上执行
-                Observable.create(new Observable.OnSubscribe<Integer>() {
+                Observable.create(new Observable.OnSubscribe<Integer>(){
                     @Override
-                    public void call(Subscriber<? super Integer> subscriber) {
+                    public void call(Subscriber<? super Integer> subscriber){
                         if(!subscriber.isUnsubscribed()){
                             for(int i = 0; i < 5; i++){
                                 subscriber.onNext(i);
@@ -51,19 +56,19 @@ public class CreatingActivity extends AppCompatActivity implements View.OnClickL
                         }
                         subscriber.onCompleted();
                     }
-                }).subscribe(new Subscriber<Integer>() {
+                }).subscribe(new Subscriber<Integer>(){
                     @Override
-                    public void onCompleted() {
+                    public void onCompleted(){
                         LogUtil.i("onCompleted");
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(Throwable e){
                         LogUtil.i("onError " + e.getMessage());
                     }
 
                     @Override
-                    public void onNext(Integer integer) {
+                    public void onNext(Integer integer){
                         LogUtil.i("onNext " + integer);
                     }
                 });
@@ -71,27 +76,60 @@ public class CreatingActivity extends AppCompatActivity implements View.OnClickL
             break;
             case R.id.btn_2: {
                 // 直到有观察者订阅时才创建Observable， 并且为每个观察者创建一个新的Observable
-                Observable.defer(new Func0<Observable<Integer>>() {
+                Observable.defer(new Func0<Observable<Integer>>(){
                     @Override
-                    public Observable<Integer> call() {
+                    public Observable<Integer> call(){
 
-                        return null;
+                        return Observable.just(999);
                     }
-                }).subscribe(new Action1<Integer>() {
+                }).subscribe(new Action1<Integer>(){
                     @Override
-                    public void call(Integer integer) {
+                    public void call(Integer integer){
                         LogUtil.i("call " + integer);
                     }
                 });
             }
             break;
             case R.id.btn_3:
+                Observable.interval(1000, TimeUnit.MILLISECONDS)
+                          .subscribe(new Action1<Long>(){
+                              @Override
+                              public void call(Long aLong){
 
+                              }
+                          });
                 break;
             case R.id.btn_4:
-
+                Observable.just("a", "b", "c").subscribe(new Action1<String>(){
+                    @Override
+                    public void call(String s){
+                        LogUtil.i("s " + s);
+                    }
+                });
                 break;
             case R.id.btn_5:
+                Observable.from(new String[]{"x", "y", "z"}).subscribe(new Action1<String>(){
+                    @Override
+                    public void call(String s){
+                        LogUtil.i("s " + s);
+                    }
+                });
+                break;
+            case R.id.btn_6:
+                Observable.range(22, 4).subscribe(new Action1<Integer>(){
+                    @Override
+                    public void call(Integer integer){
+                        LogUtil.i("i " + integer);
+                    }
+                });
+                break;
+            case R.id.btn_7:
+
+                break;
+            case R.id.btn_8:
+
+                break;
+            case R.id.btn_9:
 
                 break;
         }

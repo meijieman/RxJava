@@ -21,9 +21,9 @@ public class LogUtil{
               .append(stackTrace[3].getFileName())
               .append(":")
               .append(stackTrace[3].getLineNumber())
-              .append(")");
+              .append("): ");
         }
-        sb.append(": ").append(msg);
+        sb.append(msg);
         Log.i(TAG, sb.toString());
     }
 }

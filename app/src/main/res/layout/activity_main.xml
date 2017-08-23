@@ -20,21 +20,21 @@
     <Button android:id="@+id/btn_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="btn_3"/>
+            android:text="TransformingActivity"/>
 
     <Button android:id="@+id/btn_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="btn_4"/>
+            android:text="FilteringActivity"/>
 
     <Button android:id="@+id/btn_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="btn_5"/>
+            android:text="CombiningActivity"/>
 
     <Button android:id="@+id/btn_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="btn_6"/>
+            android:text="UtilityActivity"/>
 
 </LinearLayout>
