@@ -3,7 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.hongfans.rxjava.Execise1Activity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_1"
+        android:text="btn_1"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_2"
+        android:text="btn_1"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_3"
+        android:text="btn_1"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
