@@ -26,4 +26,23 @@ public class LogUtil{
         sb.append(msg);
         Log.i(TAG, sb.toString());
     }
+
+    public static void iWithTime(String msg){
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        StringBuilder sb = new StringBuilder();
+        if(stackTrace.length > 3){
+            sb.append(": ")
+              .append(stackTrace[3].getMethodName())
+              .append("(")
+              .append(stackTrace[3].getFileName())
+              .append(":")
+              .append(stackTrace[3].getLineNumber())
+              .append("): ");
+        }
+        sb.append("curThread: ");
+        sb.append(Thread.currentThread().getName());
+        sb.append("  ");
+        sb.append(msg);
+        Log.i(TAG, sb.toString());
+    }
 }

@@ -53,6 +53,13 @@
         android:id="@+id/btn_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Execise2Activity"/>
+
+    <Button
+        android:id="@+id/btn_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="RxTaskActivity"/>
+
 
 </LinearLayout>
