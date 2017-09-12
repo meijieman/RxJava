@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.hongfans.rxjava">
+<manifest package="com.hongfans.rxjava"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -47,6 +47,8 @@
         <activity android:name=".operation.StringActivity">
         </activity>
         <activity android:name=".ScheduleActivity">
+        </activity>
+        <activity android:name=".RxTaskActivity">
         </activity>
     </application>
 

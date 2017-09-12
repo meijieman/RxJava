@@ -7,39 +7,52 @@
     android:orientation="vertical"
     tools:context="com.hongfans.rxjava.MainActivity">
 
-    <Button android:id="@+id/btn_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ScheduleActivity"/>
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ScheduleActivity"/>
 
-    <Button android:id="@+id/btn_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CreatingActivity"/>
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CreatingActivity"/>
 
-    <Button android:id="@+id/btn_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TransformingActivity"/>
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TransformingActivity"/>
 
-    <Button android:id="@+id/btn_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FilteringActivity"/>
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FilteringActivity"/>
 
-    <Button android:id="@+id/btn_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CombiningActivity"/>
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CombiningActivity"/>
 
-    <Button android:id="@+id/btn_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UtilityActivity"/>
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UtilityActivity"/>
 
-    <Button android:id="@+id/btn_7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Execise1Activity"/>
+    <Button
+        android:id="@+id/btn_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Execise1Activity"/>
+
+    <Button
+        android:id="@+id/btn_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RxTaskActivity"/>
 
 </LinearLayout>
