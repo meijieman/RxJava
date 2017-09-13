@@ -1,7 +1,5 @@
 ReactiveX 是 Reactive Extensions 的简写，一般简写为 Rx。
 
-Meijer
-
 Single
 Observable 的变种，不同于 Observable 的是，Single 总是只发射一个值，或一个错误通知。
 
