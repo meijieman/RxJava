@@ -39,4 +39,28 @@ public class ApiImpl implements Api{
     public Uri store(Cat cat){
         return Uri.parse("cat://" + cat.hashCode());
     }
+
+    @Override
+    public void queryCats(String query, CatsQueryCallback catsQueryCallback){
+        try{
+            List<Cat> cats = queryCats(query);
+            catsQueryCallback.onCatListReceived(cats);
+        } catch(Exception e){
+            e.printStackTrace();
+            catsQueryCallback.onError(e);
+        }
+    }
+
+
+    @Override
+    public void store(Cat cat, StoreCallback storeCallback){
+        try{
+            Uri store = store(cat);
+            storeCallback.onCatStored(store);
+        } catch(Exception e){
+            e.printStackTrace();
+            storeCallback.onStoreFailed(e);
+        }
+
+    }
 }

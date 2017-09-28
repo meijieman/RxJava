@@ -25,7 +25,11 @@ public interface Api{
         void onStoreFailed(Exception e);
     }
 
-    List<Cat> queryCats(String query, CatsQueryCallback catsQueryCallback);
+    List<Cat> queryCats(String query);
+
+    Uri store(Cat cat);
+
+    void queryCats(String query, CatsQueryCallback catsQueryCallback);
 
     void store(Cat cat, StoreCallback storeCallback);
 }

@@ -41,5 +41,44 @@ public class ApiWrapper{
         });
     }
 
+    // ===============================================
+
+    public AsyncJob<List<Cat>> queryCats(String query){
+        return new AsyncJob<List<Cat>>(){
+            @Override
+            public void start(Callback<List<Cat>> catsCallback){
+                api.queryCats(query, new Api.CatsQueryCallback(){
+                    @Override
+                    public void onCatListReceived(List<Cat> cats){
+                        catsCallback.onResult(cats);
+                    }
+
+                    @Override
+                    public void onError(Exception e){
+                        catsCallback.onError(e);
+                    }
+                });
+            }
+        };
+    }
+
+    public AsyncJob<Uri> store(Cat cat){
+        return new AsyncJob<Uri>(){
+            @Override
+            public void start(Callback<Uri> callback){
+                api.store(cat, new Api.StoreCallback(){
+                    @Override
+                    public void onCatStored(Uri uri){
+                        callback.onResult(uri);
+                    }
+
+                    @Override
+                    public void onStoreFailed(Exception e){
+                        callback.onError(e);
+                    }
+                });
+            }
+        };
+    }
 
 }
