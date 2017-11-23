@@ -33,6 +33,7 @@ public class Execise1Activity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.btn_4).setOnClickListener(this);
         findViewById(R.id.btn_5).setOnClickListener(this);
         findViewById(R.id.btn_6).setOnClickListener(this);
+        findViewById(R.id.btn_7).setOnClickListener(this);
     }
 
     @Override
@@ -93,6 +94,7 @@ public class Execise1Activity extends AppCompatActivity implements View.OnClickL
                                                 .flatMap(new Func1<Integer, Observable<? extends Long>>() {
                                                     @Override
                                                     public Observable<? extends Long> call(Integer retryCount) {
+                                                        LogUtil.i("tag_aaa flatMap retryCount " + retryCount);
                                                         return Observable.timer((long) Math.pow(5, retryCount), TimeUnit.SECONDS);
                                                     }
                                                 });
@@ -140,7 +142,78 @@ public class Execise1Activity extends AppCompatActivity implements View.OnClickL
                 // merge 可以选择多个 Observable 中第一个执行完成的 Observable
                 break;
             case R.id.btn_6:
+                Observable
+                        .create(new Observable.OnSubscribe<Integer>() {
+                            @Override
+                            public void call(Subscriber<? super Integer> subscriber) {
+                                throw new NullPointerException("自定义 NPE");
+                            }
+                        })
+                        .retry(3)
+                        .flatMap(new Func1<Integer, Observable<Integer>>() {
+                            @Override
+                            public Observable<Integer> call(Integer integer) {
+                                return Observable.just(integer);
+                            }
+                        })
+                        .subscribe(new Subscriber<Integer>() {
+                            @Override
+                            public void onCompleted() {
+                                LogUtil.i("onCompleted");
+                            }
 
+                            @Override
+                            public void onError(Throwable e) {
+                                LogUtil.i("onError");
+                            }
+
+                            @Override
+                            public void onNext(Integer integer) {
+                                LogUtil.i("onNext " + integer);
+                            }
+                        });
+                break;
+            case R.id.btn_7:
+                // retryWhen
+                Observable
+                        .create(new Observable.OnSubscribe<String>() {
+                            @Override
+                            public void call(Subscriber<? super String> subscriber) {
+                                subscriber.onNext("first");
+                                subscriber.onNext("second");
+                                subscriber.onNext("third " + 3 / 0);
+                                subscriber.onCompleted();
+                            }
+                        })
+                        .retry(3)
+                        /*.retryWhen(new Func1<Observable<? extends Throwable>, Observable<?>>() {
+                            @Override
+                            public Observable<?> call(Observable<? extends Throwable> observable) {
+                                return observable
+                                        .zipWith(Observable.range(1, 3), new Func2<Throwable, Integer, Object>() {
+                                            @Override
+                                            public Object call(Throwable throwable, Integer integer) {
+                                                return integer;
+                                            }
+                                        });
+                            }
+                        })*/
+                        .subscribe(new Subscriber<String>() {
+                            @Override
+                            public void onCompleted() {
+                                LogUtil.i("onCompleted");
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                LogUtil.i("onError " + e);
+                            }
+
+                            @Override
+                            public void onNext(String s) {
+                                LogUtil.i("onNext " + s);
+                            }
+                        });
                 break;
         }
     }
