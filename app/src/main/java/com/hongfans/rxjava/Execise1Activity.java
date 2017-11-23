@@ -83,7 +83,8 @@ public class Execise1Activity extends AppCompatActivity implements View.OnClickL
 
                                         // 加入重试超时
                                         return Observable
-                                                .just(throwable).zipWith(Observable.range(1, 5), new Func2<Throwable, Integer, Integer>() {
+                                                .just(throwable)
+                                                .zipWith(Observable.range(1, 5), new Func2<Throwable, Integer, Integer>() {
                                                     @Override
                                                     public Integer call(Throwable throwable, Integer integer) {
                                                         return integer;
@@ -102,10 +103,20 @@ public class Execise1Activity extends AppCompatActivity implements View.OnClickL
                                 });
                             }
                         })
-                        .subscribe(new Action1<String>() {
+                        .subscribe(new Subscriber<String>() {
                             @Override
-                            public void call(String s) {
+                            public void onCompleted() {
+                                LogUtil.i("tag_aaa invoke onCompleted");
+                            }
 
+                            @Override
+                            public void onError(Throwable e) {
+                                LogUtil.i("tag_aaa invoke onError " + e);
+                            }
+
+                            @Override
+                            public void onNext(String s) {
+                                LogUtil.i("tag_aaa invoke onNext " + s);
                             }
                         });
                 break;
