@@ -25,7 +25,7 @@
     <Button android:id="@+id/btn_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="btn_4"/>
+            android:text="线程切换"/>
 
     <Button android:id="@+id/btn_5"
             android:layout_width="wrap_content"
