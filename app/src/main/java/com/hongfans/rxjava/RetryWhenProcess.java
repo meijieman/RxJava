@@ -9,7 +9,7 @@ import rx.functions.Func2;
 
 /**
  * 网络连接失败的处理
- *
+ * <p>
  * 使用时，只需要加上 .retryWhen(new RetryWhenProcess(5))
  * Created by MEI on 2017/9/30.
  */
@@ -33,13 +33,14 @@ public class RetryWhenProcess implements Func1<Observable<? extends Throwable>, 
                         if (throwable instanceof UnknownHostException) {
                             return Observable.error(throwable);
                         }
-                        return Observable
-                                .just(throwable).zipWith(Observable.range(1, 5), new Func2<Throwable, Integer, Integer>() {
+                        return Observable.just(throwable)
+                                .zipWith(Observable.range(1, 5), new Func2<Throwable, Integer, Integer>() {
                                     @Override
                                     public Integer call(Throwable throwable, Integer i) {
                                         return i;
                                     }
-                                }).flatMap(new Func1<Integer, Observable<? extends Long>>() {
+                                })
+                                .flatMap(new Func1<Integer, Observable<? extends Long>>() {
                                     @Override
                                     public Observable<? extends Long> call(Integer retryCount) {
                                         return Observable.timer((long) Math.pow(mInterval, retryCount), TimeUnit.SECONDS);
